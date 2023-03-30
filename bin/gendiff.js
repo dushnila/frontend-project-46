@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import fs from 'fs';
 import _ from 'lodash';
 import { Command } from 'commander';
@@ -11,7 +12,7 @@ program
   .version('1.0.0')
   .argument('<path1>', 'path to file')
   .argument('<path2>', 'path to file')
-  .option('-f, --format <type>',  'output format')
+  .option('-f, --format <type>', 'output format')
   .action((path1, path2) => {
     const data1 = fs.readFileSync(path1, 'utf8');
     const obj1 = JSON.parse(data1);
@@ -30,20 +31,17 @@ program
           element1[0] = ' ';
           element2[0] = ' ';
         }
-      })
-    })
-    
+      });
+    });
+
     const filterdata2Arr = data2Arr.filter(([char]) => char !== ' ');
 
     const generalArr = [...data1Arr, ...filterdata2Arr];
     const generalSortedArr = _.sortBy(generalArr, ([, key]) => key);
     const generateString = generalSortedArr
-    .map(([char, key, value]) => {
-      return `${char} ${key}: ${value}`;
-    })
-    .join('\n')
+      .map(([char, key, value]) => `${char} ${key}: ${value}`)
+      .join('\n');
     console.log(`{\n${generateString}\n}`);
   });
 
 program.parse(process.argv);
-
