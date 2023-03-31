@@ -30,7 +30,7 @@ program
         if (key1 === key2 && value1 === value2) {
           // eslint-disable-next-line no-param-reassign
           element1[0] = ' ';
-          // eslint-disable-next-line no-param-reassign
+
           element2[0] = ' ';
         }
       });
