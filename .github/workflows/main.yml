@@ -1,0 +1,15 @@
+# Name of workflow
+name: Node CI
+
+# Trigger the workflow on push or pull request
+on:
+  - push
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: make install
+      - run: make lint
+    # - run: make test
