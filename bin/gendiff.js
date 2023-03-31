@@ -28,7 +28,9 @@ program
         const [, key1, value1] = element1;
         const [, key2, value2] = element2;
         if (key1 === key2 && value1 === value2) {
+          // eslint-disable-next-line no-param-reassign
           element1[0] = ' ';
+          // eslint-disable-next-line no-param-reassign
           element2[0] = ' ';
         }
       });
